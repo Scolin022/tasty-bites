@@ -1,15 +1,12 @@
-// import 
-
-// define child components at top level
-
-
-
-// parent component
 export default function HomePage () {
     return (
         <div>
             {/* <ContentHeader /> */}
-            <h1>Is HomePage displaying test</h1>
+            <li>RECIPE</li>
+            <li>RECIPE</li>
+            <li>RECIPE</li>
+            <li>RECIPE</li>
+            <li>RECIPE</li>
             {/* <div>
                 {recipes.map(recipe => (
                     <div key={recipe.id}>{recipe.title}</div>
