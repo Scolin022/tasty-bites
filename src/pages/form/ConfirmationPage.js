@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function LoginSucessful(){
+export default function SignUpSucessful(){
     return (
         <div>
             <h1>Account Created Sucessfully</h1>
