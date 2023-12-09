@@ -1,20 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-import Homepage from './HomePage';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-function App() {
+// import logo from './logo.svg';
+import './App.css';
+import HomePage from './HomePage';
+import RegisterForm from './RegisterForm';
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Homepage />
-        {/* <nav link />
-        <nav link />
-        <nav link /> */}
-      </header>
-      <footer className="App-footer">
-      </footer>
-    </div>
+    <Router>
+      <div className="App">
+        {/* <div className="App-header">
+          <Header/>
+        </div> */}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/RegisterForm" element={<RegisterForm />} />
+          {/* 
+          <Route path="/SavedRecipesPage" element={<SavedRecipesPage />} />
+          <Route path="/LoginPage" element={<LoginPage />} /> 
+          */}
+        </Routes>
+        <div>
+          {/* <Footer /> */}
+          <RegisterForm />
+        </div>
+      </div>
+    </Router>
   );
 }
-
-export default App;
