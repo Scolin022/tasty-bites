@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function SignUpForm() {
+const RegistrationForm = () => {
     const [userName, setUserName] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
@@ -73,3 +73,37 @@ export default function SignUpForm() {
         </div>
     ); 
 }
+
+const LoginForm = () => {
+    return (
+        <div>
+            <h3>Sign In</h3>
+            <form>
+                <label htmlFor="email">
+                    Email
+                    <input
+                        type="email"
+                        // value=
+                        onChange={(e) => (e.target.value)}
+                        required
+                    />
+                </label>
+                <br />
+                <label htmlFor="password">
+                    Password
+                    <input
+                        type="text"
+                        // value=
+                        onChange={(e) => (e.target.value)}
+                        required
+                    />
+                </label>
+                <br />
+                <button type="submit">Finish</button>
+            </form>
+        </div>
+    ); 
+}
+
+export {RegistrationForm};
+export {LoginForm};
