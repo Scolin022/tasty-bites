@@ -12,7 +12,6 @@ function App() {
         <nav link /> */}
       </header>
       <footer className="App-footer">
-
       </footer>
     </div>
   );
