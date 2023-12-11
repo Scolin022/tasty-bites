@@ -1,18 +1,13 @@
 <?php
-
+// Enable CORS
 header("Access-Control-Allow-Origin: *");
+
 var_dump($_POST);
 
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "tasty_bites";
+// Create connection
+require_once('connect.php');
 
 try {
-    // Create PDO connection
-    $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
     // Create table if it doesn't exist
     $sql = "CREATE TABLE IF NOT EXISTS users (
       UserID INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -23,7 +18,7 @@ try {
     $pdo->exec($sql);
 
     // Insert data from form into table
-    $userName = $_POST["username"]; // $_POST should match names on form
+    $userName = $_POST["username"]; // $_POST should match htmlFor on form
     $userEmail = $_POST["email"];
     $userPassword = $_POST["password"];
 
