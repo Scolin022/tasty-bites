@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom';
 
 export default function AppFooter() {
+    const year = new Date().getFullYear();
+
     return (
-        <div>
+        <footer>
             <div>
-                <p>@2023 Samantha Colin</p>
+                <p>© {year} Samantha Colin | All Rights Reserved</p>
             </div>
             <div>
-                <Link to="">Contact Us</Link>
+                <Link to="/pages/form/ContactUsPage">Contact Us</Link>
             </div>
-        </div>
+        </footer>
     );
 }
