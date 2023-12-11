@@ -1,11 +1,19 @@
-import SignUpForm from './../../components/form/Forms.jsx';
+import { RegistrationForm } from './../../components/form/Forms.jsx';
+import { Link } from 'react-router-dom';
 
 export default function SignUp() {
     return (
         <div>
-            <h1>Hundreds of Delicious Recipes, Right at your Fingertips.</h1>
-            <h2>Sign Up Today!</h2>
-            <SignUpForm />
+            <div>
+                <h1>Sign Up</h1>
+                <h2>Enter your information below to get signed up today!</h2>
+                <p>Hundreds of Delicious Recipes, Right at your Fingertips.</p>
+                <RegistrationForm />
+            </div>
+            <div>
+                <h4>Already have an account?</h4>
+                <Link to="/pages/form/LoginPage">Login</Link>
+            </div>
         </div>
     );
 }

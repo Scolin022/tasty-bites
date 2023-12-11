@@ -10,9 +10,9 @@ const RegistrationForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        
         const formData = new URLSearchParams();
-
+        
         formData.append('username', userName);
         formData.append('email', userEmail);
         formData.append('password', userPassword);
@@ -36,7 +36,7 @@ const RegistrationForm = () => {
 
     return (
         <div>
-            <h3>Sign Up</h3>
+            <h3>Create your account</h3>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">
                     Create username:
@@ -75,9 +75,23 @@ const RegistrationForm = () => {
 }
 
 const LoginForm = () => {
+    const [userName, setUserName] = useState('');
+    const [userPassword, setUserPassword] = useState('');
+    const [user, setUser] = useState('');
+
+    const handleSubmit = async(e) => {
+
+    };
+
+    // if there is a user, then shows message
+    if (user) {
+        return <div>(user.name} is logged in</div>
+    }
+
+    // if not, login form shown
     return (
         <div>
-            <h3>Sign In</h3>
+            <h3>Enter your account</h3>
             <form>
                 <label htmlFor="email">
                     Email
