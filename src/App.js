@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
 
 // import logo from './logo.svg';
 import './App.css';
@@ -13,6 +14,10 @@ import AddRecipe from './pages/form/AddRecipePage';
 import SavedRecipes from './pages/SavedRecipesPage';
 
 export default function App() {
+  useEffect(() => {
+    document.title = 'TastyBites Online Recipe App';
+  }, []);
+
   return (
     <Router>
       <div className="App">
