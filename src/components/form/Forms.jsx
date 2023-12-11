@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 const RegistrationForm = () => {
     const [userName, setUserName] = useState('');
     const [userEmail, setUserEmail] = useState('');
@@ -38,6 +39,7 @@ const RegistrationForm = () => {
         <div>
             <h3>Create your account</h3>
             <form onSubmit={handleSubmit}>
+
                 <label htmlFor="username">
                     Create username:
                     <input
@@ -48,6 +50,7 @@ const RegistrationForm = () => {
                     />
                 </label>
                 <br />
+
                 <label htmlFor="email">
                     Email address:
                     <input
@@ -58,6 +61,7 @@ const RegistrationForm = () => {
                     />
                 </label>
                 <br />
+
                 <label htmlFor="password">
                     Create password:
                     <input
@@ -68,13 +72,14 @@ const RegistrationForm = () => {
                     />
                 </label>
                 <br />
+
                 <button type="submit">Finish</button>
             </form>
         </div>
     ); 
 }
 
-
+/////////////////////////////////////////////////////////////////////////////////////////
 
 const LoginForm = () => {
     const [userName, setUserName] = useState('');
@@ -89,7 +94,6 @@ const LoginForm = () => {
     if (user) {
         return <div>(user.name} is logged in</div>
     }
-
     // if not, login form shown
     return (
         <div>
@@ -121,7 +125,7 @@ const LoginForm = () => {
     ); 
 }
 
-
+////////////////////////////////////////////////////////////////
 
 const InputRecipeForm = () => {
     // title
@@ -171,8 +175,10 @@ const InputRecipeForm = () => {
     return (
         <div>
             <h3>Create your own recipe</h3>
+
             <h4>General Overview</h4>
             <form onSubmit={handleSubmit}>
+
                 <label htmlFor="title">
                     Recipe Name
                     <input
@@ -183,7 +189,9 @@ const InputRecipeForm = () => {
                     />
                 </label>
                 <br />
+
                 <label htmlFor="image">
+
                     Image
                     <input
                         type="text"
@@ -193,6 +201,7 @@ const InputRecipeForm = () => {
                     />
                 </label>
                 <br />
+
                 <label htmlFor="description">
                     Brief Description
                     <input
@@ -203,6 +212,7 @@ const InputRecipeForm = () => {
                     />
                 </label>
                 <br />
+
                 <label htmlFor="servings">
                     Servings
                     <input
@@ -213,6 +223,7 @@ const InputRecipeForm = () => {
                     />
                 </label>
                 <br />
+
                 <label htmlFor="prep-time">
                     Estimated Preparation Time
                     <input
@@ -223,6 +234,7 @@ const InputRecipeForm = () => {
                     />
                 </label>
                 <br />
+
                 <label htmlFor="cook-time">
                     Estimated Cook Time
                     <input
@@ -233,12 +245,15 @@ const InputRecipeForm = () => {
                     />
                 </label>
                 <br />
+
                 <button type="submit">Add Recipe</button>
             </form>
+
             <h4>Ingredients</h4>
             <form>
 
             </form>
+
             <h4>Recipe Instructions</h4>
             <form>
 
@@ -247,7 +262,7 @@ const InputRecipeForm = () => {
     ); 
 }
 
-
+////////////////////////////////////////////////////////////////
 
 function ContactForm() {
     const [name, setName] = useState('');
@@ -279,36 +294,43 @@ function ContactForm() {
     return (
         <div className="loginFormContainer">
             <form onSubmit={handleSubmit}>
+
                 <h1>What Can We Help You With?</h1>
 
-                <label htmlFor="text">Name</label>
-
-                <input
+                <label htmlFor="text">
+                    Name
+                    <input
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Your Name"
                     required
-                />
+                    />
+                </label>
+                <br />
 
-                <label htmlFor="email">Email</label>
-
-                <input
+                <label htmlFor="email">
+                    Email
+                    <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Your Email"
                     required
-                />
+                    />
+                </label>
+                <br />
 
-                <label htmlFor="message">Your Message</label>
-
-                <textarea
+                <label htmlFor="message">
+                    Your Message
+                    <textarea
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Your Message"
                     required
-                />
+                    />
+                </label>
+                <br />
 
                 <button type="submit">Send Message</button>
             </form>
