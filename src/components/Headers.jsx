@@ -5,9 +5,10 @@ export default function Header() {
         <header>
             <h1><Link to="/">TastyBites</Link></h1>
             <nav>
-                <Link to="#">Saved Recipes</Link>
-                <Link to="#">Login</Link>
-                <Link to="/users/account/SignUpPage">Sign Up</Link>
+                <Link to="/pages/SavedRecipesPage">Saved Recipes</Link>
+                <Link to="/pages/form/AddRecipePage">Add Recipe</Link>
+                <Link to="/pages/form/LoginPage">Login</Link>
+                <Link to="/pages/form/SignUpPage">Sign Up</Link>
             </nav>
         </header>
     );
