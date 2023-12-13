@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+
 
 
 const RegistrationForm = () => {
@@ -26,8 +29,6 @@ const RegistrationForm = () => {
             .then(data => {
                  // show user account information
                 console.log('Data retrieved sucessfully!', data);
-
-                // loads when account is processed sucessfully
                 navigate('/ConfirmationPage');
             })
             .catch(error => {
@@ -39,7 +40,6 @@ const RegistrationForm = () => {
         <div>
             <h3>Create your account</h3>
             <form onSubmit={handleSubmit}>
-
                 <label htmlFor="username">
                     Create username:
                     <input
@@ -65,7 +65,7 @@ const RegistrationForm = () => {
                 <label htmlFor="password">
                     Create password:
                     <input
-                        type="text"
+                        type="password"
                         value={userPassword}
                         onChange={(e) => setUserPassword(e.target.value)}
                         required
@@ -79,7 +79,9 @@ const RegistrationForm = () => {
     ); 
 }
 
+
 /////////////////////////////////////////////////////////////////////////////////////////
+
 
 const LoginForm = () => {
     const [userName, setUserName] = useState('');
@@ -112,7 +114,7 @@ const LoginForm = () => {
                 <label htmlFor="password">
                     Password
                     <input
-                        type="text"
+                        type="password"
                         // value=
                         onChange={(e) => (e.target.value)}
                         required
@@ -125,15 +127,12 @@ const LoginForm = () => {
     ); 
 }
 
-////////////////////////////////////////////////////////////////
+
+
+
+
 
 const InputRecipeForm = () => {
-    // title
-    // image
-    // description
-    // servings
-    // prep_time
-    // cook_time
     const [recipeName, setRecipeName] = useState('');
     const [recipeImage, setRecipeImage] = useState('');
     const [recipeDescription, setRecipeDescription] = useState('');
@@ -178,7 +177,7 @@ const InputRecipeForm = () => {
 
             <h4>General Overview</h4>
             <form onSubmit={handleSubmit}>
-
+                
                 <label htmlFor="title">
                     Recipe Name
                     <input
@@ -262,7 +261,10 @@ const InputRecipeForm = () => {
     ); 
 }
 
-////////////////////////////////////////////////////////////////
+
+
+
+
 
 function ContactForm() {
     const [name, setName] = useState('');
@@ -274,7 +276,8 @@ function ContactForm() {
         event.preventDefault();
         try {
             const formData = { name, email, message };
-            const response = await fetch('./../../server/contact_us.php', {
+            console.log(formData);
+            const response = await fetch('http://localhost:8888/contact_us.phps', {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',
@@ -289,7 +292,10 @@ function ContactForm() {
     };      
 
     if (formSubmitted) {
-        return <div>Thank you for submitting your information. We have processed your account successfully</div>
+        return <div>
+                Thank you, {name}, for submitting your information. 
+                We have processed your account successfully and will be in touch with you at {email}.
+            </div>
     }
     return (
         <div className="loginFormContainer">
@@ -339,7 +345,44 @@ function ContactForm() {
     );
 }
 
+
+
+
+
+
+
+    const AdminLoginForm = () => {
+        const [username, setUsername] = useState('');
+        const [password, setPassword] = useState('');
+
+        const navigate = useNavigate(); 
+        
+        const handleSubmit = async (event) => {
+            event.preventDefault();
+            try {
+                const response = await axios.post('http://localhost:8888/admin_login.php', { username, password });
+                if (response.data.success) {
+                    navigate('/ConfirmationPage');
+                }
+            } catch (error) {
+                console.error('Login failed', error);
+            }
+        };
+
+        return (
+            <form onSubmit={handleSubmit}>
+                <label>Username</label>
+                <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+                <label>Password</label>
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <input type="text" style={{ display: 'none' }} /> {/* Honeypot Field */}
+                <button type="submit">Login</button>
+            </form>
+        );
+    };
+
 export {RegistrationForm};
 export {LoginForm};
 export {ContactForm};
 export {InputRecipeForm};
+export {AdminLoginForm};
