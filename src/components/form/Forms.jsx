@@ -5,6 +5,7 @@ import axios from 'axios';
 
 
 
+
 const RegistrationForm = () => {
     const [userName, setUserName] = useState('');
     const [userEmail, setUserEmail] = useState('');
@@ -80,7 +81,13 @@ const RegistrationForm = () => {
 }
 
 
+
+
+
 /////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 
 
 const LoginForm = () => {
@@ -126,6 +133,12 @@ const LoginForm = () => {
         </div>
     ); 
 }
+
+
+
+
+
+
 
 
 
@@ -260,6 +273,9 @@ const InputRecipeForm = () => {
         </div>
     ); 
 }
+
+
+
 
 
 

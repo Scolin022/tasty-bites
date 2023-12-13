@@ -13,7 +13,7 @@ export default function AppFooter() {
             <div className="footer-column">
                 <div className="footer-title">" Contact " TastyBites</div>
                     <div className="footer-item"><Link to="/pages/form/ContactUsPage">Contact Us</Link></div>
-                <div className="footer-separator"></div>
+                    
                 <div className="footer-title">Jump to</div>
                     <div className="footer-item">Home</div>
             </div>
