@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { PageTitle } from '../components/PageTitle'
+import './../styles/home-page.css';
 
 export default function Home() {
 
@@ -17,17 +18,17 @@ export default function Home() {
         <PageTitle title="TastyBites | Recipe Saving Sharing & Creation" />
         <h1>Recipes Catalog</h1>
         {recipes.map((recipe) => (
-        <div key={recipe.id}>
-            <h2>{recipe.title}</h2>
+        <div className="projects-container">
+            <div key={recipe.id} className="project">
             <h2>{recipe.image}</h2>
-            <h3>Description</h3>
-            <h2>{recipe.description}</h2>
-            <h3>Servings</h3>
-            <h2>{recipe.servings}</h2>
-            <h3>Cook Time</h3>
+            <h2>{recipe.title}</h2>
+            {/* <h3>Description</h3> for onClick
+            <h2>{recipe.description}</h2> */}
+            <p>Servings: {recipe.servings}</p>
+            <p>Cook Time: {recipe.cook_time}min.</p>
             <p>{recipe.cook_time}</p>
-            <h3>Prep Time</h3>
-            <p>{recipe.prep_time}</p>
+            <p>Prep Time: {recipe.prep_time}min.</p>
+        </div>
         </div>
         ))}
         {/* {selectedRecipe && ( 
