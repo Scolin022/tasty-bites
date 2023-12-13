@@ -22,10 +22,9 @@ export default function Home() {
             <button key={recipe.id} className="gallery-item">
                 <h2>{recipe.image}</h2>
                 <h2>{recipe.title}</h2>
-                <h3>Description</h3>
-                <h2>{recipe.description}</h2>
-                <h3>Servings</h3>
-                <h2>{recipe.servings}</h2>
+                {/* <h3>Description</h3>
+                <h2>{recipe.description}</h2> */}
+                <span>Servings: {recipe.servings}</span>
                 <div className="tags">
                     <span>Prep Time: {recipe.prep_time}</span>
                     <span>Cook Time: {recipe.cook_time}</span>

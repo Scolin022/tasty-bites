@@ -33,9 +33,8 @@ export default function AppFooter() {
             <div className="footer-separator"></div>
 
             <div class="footer-quote">"Some cool quote."</div>
-            <div className="footer-credit">Wireframed, designed, prototyped, and hand-coded by ...</div>
 
-            <div className="footer-column">
+            <div className="footer-credit">
                 <div>© {year} Samantha Colin</div>
                 <div>All Rights Reserved.</div>
             </div>
