@@ -9,6 +9,7 @@ export default function Header() {
                 <Link to="/pages/form/AddRecipePage">Add Recipe</Link>
                 <Link to="/pages/form/LoginPage">Login</Link>
                 <Link to="/pages/form/SignUpPage">Sign Up</Link>
+                <Link to="/pages/form/AdminLoginPage">Admin Login</Link>
             </nav>
         </header>
     );
