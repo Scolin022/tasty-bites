@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+import { PageTitle } from '../components/PageTitle'
 
 export default function Home() {
+
     const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
@@ -11,15 +13,9 @@ export default function Home() {
     }, []);
   
     return (
-    //   <div>
-    //     <div><h1>Recipes</h1></div>
-    //     <ul>
-    //       {recipes.map(recipe => (
-    //         <li key={recipe.id}>{recipe.title}</li>
-    //       ))}
-    //     </ul>
-    //   </div>
     <div>
+        <PageTitle title="TastyBites | Recipe Saving Sharing & Creation" />
+        <h1>Recipes Catalog</h1>
         {recipes.map((recipe) => (
         <div key={recipe.id}>
             <h2>{recipe.title}</h2>
