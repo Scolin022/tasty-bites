@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { FileUploader } from './FileUploader';
+import '../../styles/forms.css';
 
 
 
@@ -29,7 +30,6 @@ const RegistrationForm = () => {
         })
             .then(response => response.text())
             .then(data => {
-                 // show user account information
                 console.log('Data retrieved sucessfully!', data);
                 navigate('/ConfirmationPage');
             })
@@ -39,7 +39,7 @@ const RegistrationForm = () => {
     };
 
     return (
-        <>
+        <div className="form-container">
             <h3>Create your account</h3>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">
@@ -77,7 +77,7 @@ const RegistrationForm = () => {
 
                 <button type="submit">Finish</button>
             </form>
-        </>
+        </div>
     ); 
 }
 
@@ -100,13 +100,12 @@ const LoginForm = () => {
 
     };
 
-    // if there is a user, then shows message
     if (user) {
         return <div>(user.name} is logged in</div>
     }
-    // if not, login form shown
+
     return (
-        <div>
+        <div className="form-container">
             <h3>Enter your account</h3>
             <form>
                 <label htmlFor="email">
@@ -184,7 +183,7 @@ const InputRecipeForm = () => {
     };
 
     return (
-        <div>
+        <div className="form-container">
             <h3>Create your own recipe</h3>
 
             <h4>General Overview</h4>
@@ -249,18 +248,30 @@ const InputRecipeForm = () => {
                     <FileUploader onFileSelect={handleFileSelect} />
                 </label>
                 <br />
+                
+                {/* <label htmlFor="ingredients">
+                    Ingredients
+                    <input
+                        type="text"
+                        value={recipeCookTime}
+                        onChange={(e) => setRecipeCookTime(e.target.value)}
+                        required
+                    />
+                </label>
+                <br />
+
+                <label htmlFor="instructions">
+                    Instructions
+                    <input
+                        type="text"
+                        value={recipeCookTime}
+                        onChange={(e) => setRecipeCookTime(e.target.value)}
+                        required
+                    />
+                </label>
+                <br /> */}
 
                 <button type="submit" onSubmit={handleSubmit}>Add Recipe</button>
-            </form>
-
-            <h4>Ingredients</h4>
-            <form>
-
-            </form>
-
-            <h4>Recipe Instructions</h4>
-            <form>
-
             </form>
         </div>
     ); 
@@ -305,7 +316,7 @@ function ContactForm() {
             </div>
     }
     return (
-        <div className="loginFormContainer">
+        <div className="form-container">
             <form onSubmit={handleSubmit}>
 
                 <h1>What Can We Help You With?</h1>
@@ -377,14 +388,16 @@ function ContactForm() {
         };
 
         return (
-            <form onSubmit={handleSubmit}>
-                <label>Username</label>
-                <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-                <label>Password</label>
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                <input type="text" style={{ display: 'none' }} /> {/* Honeypot Field */}
-                <button type="submit">Login</button>
-            </form>
+            <div className="form-container">
+                <form onSubmit={handleSubmit}>
+                    <label>Username</label>
+                    <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+                    <label>Password</label>
+                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <input type="text" style={{ display: 'none' }} /> {/* Honeypot Field */}
+                    <button type="submit">Login</button>
+                </form>
+            </div>
         );
     };
 

@@ -17,6 +17,7 @@
 .footer-title {
     font-weight: bold;
     margin-bottom: 10px;
+    color: #c6c6c6;
 }
 
 .footer-item {
@@ -24,7 +25,7 @@
 }
 
 .footer-item::before {
-    content: '■';  /* You can replace this with actual icons or symbols */
+    content: '■';
     margin-right: 5px;
 }
 
@@ -32,7 +33,7 @@
     flex-basis: 100%;
     height: 2px;
     background-color: #555;
-    margin: 20px 0;
+    margin: 1.5rem 0;
 }
 
 .footer-quote {
@@ -47,7 +48,7 @@
     flex-basis: 100%;
     font-size: 12px;
     text-align: right;
-    padding-right: 1.3rem;
+    padding-right: 1.5rem;
     letter-spacing: .17rem;
 }
 
@@ -63,20 +64,19 @@
 
     .footer-column {
         width: 100%;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        padding: 2rem 0rem 2rem 0rem;
+        padding: 1.5rem 0rem 1.5rem 0rem;
     }
 
     .footer-quote {
         font-style: italic;
-        letter-spacing: .07rem;
+        letter-spacing: .05rem;
         padding: 2rem 0rem 4rem 0rem;
     }
     
     .footer-credit {
+        font-weight: bold;
         padding-right: 0;
         text-align: center;
-        letter-spacing: .25rem;
+        letter-spacing: .17rem;
     }
 }

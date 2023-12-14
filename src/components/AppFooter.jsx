@@ -20,7 +20,7 @@ export default function AppFooter() {
         
             <div className="footer-column">
                 <div className="footer-title">More about me</div>
-                <div className="footer-item">Personal blog</div>
+                <div className="footer-item"></div>
             </div>
         
             <div className="footer-column">
@@ -32,7 +32,7 @@ export default function AppFooter() {
         
             <div className="footer-separator"></div>
 
-            <div class="footer-quote">"Some cool quote."</div>
+            <div class="footer-quote">"Food is life."</div>
 
             <div className="footer-credit">
                 <div>© {year} Samantha Colin</div>
