@@ -18,7 +18,7 @@ export default function AppFooter() {
                     <div className="footer-item">Home</div>
             </div>
         
-            <div class="footer-column">
+            <div className="footer-column">
                 <div className="footer-title">More about me</div>
                 <div className="footer-item">Personal blog</div>
             </div>

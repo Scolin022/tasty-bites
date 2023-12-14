@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { FileUploader } from './FileUploader';
 
 
 
@@ -38,7 +39,7 @@ const RegistrationForm = () => {
     };
 
     return (
-        <div>
+        <>
             <h3>Create your account</h3>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">
@@ -76,7 +77,7 @@ const RegistrationForm = () => {
 
                 <button type="submit">Finish</button>
             </form>
-        </div>
+        </>
     ); 
 }
 
@@ -141,13 +142,9 @@ const LoginForm = () => {
 
 
 
-
-
-
-
 const InputRecipeForm = () => {
     const [recipeName, setRecipeName] = useState('');
-    const [recipeImage, setRecipeImage] = useState('');
+    const [selectedFile, setSelectedFile] = useState('');
     const [recipeDescription, setRecipeDescription] = useState('');
     const [recipeServings, setRecipeServings] = useState('');
     const [recipePrepTime, setRecipePrepTime] = useState('');
@@ -155,28 +152,30 @@ const InputRecipeForm = () => {
 
     const navigate = useNavigate(); 
 
+    const handleFileSelect = (file) => {
+        setSelectedFile(file);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        const formData = new URLSearchParams();
+        const formData = new FormData();
         
         formData.append('title', recipeName);
-        formData.append('image', recipeImage);
+        formData.append("image", selectedFile);
         formData.append('description', recipeDescription);
         formData.append('servings', recipeServings);
         formData.append('prep-time', recipePrepTime);
         formData.append('cook-time', recipeCookTime);
-
         fetch('http://localhost:8888/add_recipe.php' , {
             method: 'POST',
             body: formData,
         })
             .then(response => response.text())
             .then(data => {
-                 // show user account information
                 console.log('Data retrieved sucessfully!', data);
-
-                // loads when account is processed sucessfully
+                console.log(formData);
+                console.log(data);
                 navigate('/ConfirmationPage');
             })
             .catch(error => {
@@ -202,18 +201,6 @@ const InputRecipeForm = () => {
                 </label>
                 <br />
 
-                <label htmlFor="image">
-
-                    Image
-                    <input
-                        type="text"
-                        value={recipeImage}
-                        onChange={(e) => setRecipeImage(e.target.value)}
-                        required
-                    />
-                </label>
-                <br />
-
                 <label htmlFor="description">
                     Brief Description
                     <input
@@ -229,7 +216,6 @@ const InputRecipeForm = () => {
                     Servings
                     <input
                         type="text"
-                        value={recipeServings}
                         onChange={(e) => setRecipeServings(e.target.value)}
                         required
                     />
@@ -258,7 +244,13 @@ const InputRecipeForm = () => {
                 </label>
                 <br />
 
-                <button type="submit">Add Recipe</button>
+                <label htmlFor="image">
+                    Upload Recipe Image
+                    <FileUploader onFileSelect={handleFileSelect} />
+                </label>
+                <br />
+
+                <button type="submit" onSubmit={handleSubmit}>Add Recipe</button>
             </form>
 
             <h4>Ingredients</h4>
@@ -273,7 +265,6 @@ const InputRecipeForm = () => {
         </div>
     ); 
 }
-
 
 
 

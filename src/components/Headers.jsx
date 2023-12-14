@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
+import "../styles/header.css";
 
 export default function Header() {
     return (
-        <header>
+        <header className="header">
             <h1><Link to="/">TastyBites</Link></h1>
-            <nav>
+            <nav className="nav-bar">
                 <Link to="/pages/SavedRecipesPage">Saved Recipes</Link>
                 <Link to="/pages/form/AddRecipePage">Add Recipe</Link>
                 <Link to="/pages/form/LoginPage">Login</Link>

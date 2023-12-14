@@ -47,8 +47,8 @@
     flex-basis: 100%;
     font-size: 12px;
     text-align: right;
-    padding-right: 2.2rem;
-    letter-spacing: .18rem;
+    padding-right: 1.3rem;
+    letter-spacing: .17rem;
 }
 
 @media (max-width: 850px) {
