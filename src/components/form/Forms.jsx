@@ -391,42 +391,42 @@ function ContactForm() {
 
 
 
-    // const AdminLoginForm = () => {
-    //     const [username, setUsername] = useState('');
-    //     const [password, setPassword] = useState('');
+    const AdminLoginForm = () => {
+        const [username, setUsername] = useState('');
+        const [password, setPassword] = useState('');
 
-    //     const navigate = useNavigate(); 
+        const navigate = useNavigate(); 
         
-    //     const handleSubmit = async (e) => {
-    //         e.preventDefault();
-    //         try {
-    //             const response = await axios.post('http://localhost:8888/admin_login.php', { username, password });
-    //             if (response.data.success) {
-    //                 navigate('/ConfirmationPage');
-    //             }
-    //         } catch (error) {
-    //             console.error('Login failed', error);
-    //         }
-    //     };
+        const handleSubmit = async (e) => {
+            e.preventDefault();
+            try {
+                const response = await axios.post('http://localhost:8888/admin_login.php', { username, password });
+                if (response.data.success) {
+                    navigate('/ConfirmationPage');
+                }
+            } catch (error) {
+                console.error('Login failed', error);
+            }
+        };
 
-    //     return (
-    //         <div className="form-container">
-    //             <form onSubmit={handleSubmit}>
-    //                 <label>Username</label>
-    //                 <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-    //                 <label>Password</label>
-    //                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-    //                 <input type="text" style={{ display: 'none' }} /> {/* Honeypot */}
-    //                 <button type="submit">
-    //                     Login
-    //                 </button>
-    //             </form>
-    //         </div>
-    //     );
-    // };
+        return (
+            <div className="form-container">
+                <form onSubmit={handleSubmit}>
+                    <label>Username</label>
+                    <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+                    <label>Password</label>
+                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <input type="text" style={{ display: 'none' }} /> {/* Honeypot */}
+                    <button type="submit">
+                        Login
+                    </button>
+                </form>
+            </div>
+        );
+    };
 
 export {RegistrationForm};
 export {LoginForm};
 export {ContactForm};
 export {InputRecipeForm};
-// export {AdminLoginForm};
+export {AdminLoginForm};
