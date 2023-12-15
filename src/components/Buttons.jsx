@@ -1,9 +1,7 @@
 const ClassicBtn = () => {
     return (
         <div>
-            <div>
-                <button className="">Submit</button>
-            </div>
+            <button className="">Submit</button>
         </div>
     );
 }
@@ -11,9 +9,7 @@ const ClassicBtn = () => {
 const SubmitBtn = () => {
     return (
         <div>
-            <div>
-                <button className="">Submit</button>
-            </div>
+            <button className="">Submit</button>
         </div>
     );
 }
@@ -21,9 +17,7 @@ const SubmitBtn = () => {
 const SignUpBtn = () => {
     return (
         <div>
-            <div>
-                <button className="">Register</button>
-            </div>
+            <button className="">Register</button>
         </div>
     );
 }

@@ -1,22 +1,17 @@
 import { useEffect, useState } from 'react';
-import { PageTitle } from '../components/PageTitle'
-import RecipeClicked from '../components/Recipe';
-import './../styles/home-page.css';
+import { PageTitle } from 'components/PageTitle'
+import RecipeClicked from 'components/Recipe';
+import 'styles/home-page.css';
 
 
 export default function Home() {
     const [selectedRecipe, setSelectedRecipe] = useState(null);
-
-    const openRecipe = (recipe) => {
-        setSelectedRecipe(recipe);
-    };
-
-    const closeRecipe = () => {
-        setSelectedRecipe(null);
-    };
-
     const [recipes, setRecipes] = useState([]);
 
+    const openRecipe = (recipe) => { setSelectedRecipe(recipe); };
+    const closeRecipe = () => { setSelectedRecipe(null); };
+
+    
     useEffect(() => {
       fetch('http://localhost:8888/get_recipes.php')
         .then(response => response.json())
@@ -25,27 +20,40 @@ export default function Home() {
     }, []);
   
     return (
-    <div>
-        <PageTitle title="TastyBites | Recipe Saving Sharing & Creation" />
+        <div>
+            <PageTitle title="TastyBites | Recipe Saving Sharing & Creation" />
+            
+            <div>
+                <h1>
+                    Recipes Catalog
+                </h1>
+            </div>
 
-        <h1>Recipes Catalog</h1>
+            <div className="gallery-container">
+                {recipes.map((recipe) => (
 
-        <div className="gallery-container">
-            {recipes.map((recipe) => (
-                <button key={recipe.id} onClick={() => openRecipe(recipe)} className="gallery-item">
-                    <img src={`http://localhost:8888/uploads/${recipe.image}`} alt={recipe.title} className="project-image"/>
-                    <h2>{recipe.title}</h2>
-                    <span>Servings: {recipe.servings}</span>
-                    <div className="tags">
-                        <span>Prep Time: {recipe.prep_time}</span>
-                        <span>Cook Time: {recipe.cook_time}</span>
-                    </div>
-                </button>
-            ))}
-            {selectedRecipe && ( 
-                <RecipeClicked recipe={selectedRecipe} onClose={closeRecipe} />
-            )}
+                    <button key={recipe.id} onClick={() => openRecipe(recipe)} className="gallery-item">
+                        <img src={`http://localhost:8888/uploads/${recipe.image}`}
+                             alt={recipe.title} className="project-image"/>
+
+                        <h2>
+                            {recipe.title}
+                        </h2>
+
+                        <span>Servings: {recipe.servings}</span>
+
+                        <div className="tags">
+                            <span>Prep Time: {recipe.prep_time}</span>
+                            <span>Cook Time: {recipe.cook_time}</span>
+                        </div>
+                    </button>
+
+                ))}
+
+                {selectedRecipe && ( 
+                    <RecipeClicked recipe={selectedRecipe} onClose={closeRecipe} />
+                )}
+            </div>
         </div>
-    </div>
     );
 }

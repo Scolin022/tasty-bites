@@ -13,10 +13,11 @@ const FileUploader = ({ onFileSelect }) => {
     return (
         <div className="file-uploader">
             <input type="file" ref={fileInput} onChange={handleFileInput}></input>
-            <button onClick={e => fileInput.current && fileInput.current.click()} style={{ display: 'none' }}>Upload</button>
+            <button onClick={e => fileInput.current && fileInput.current.click()} style={{ display: 'none' }}>
+                Upload
+            </button>
         </div>
     )
 }
-
 
 export { FileUploader };

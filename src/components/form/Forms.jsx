@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { FileUploader } from './FileUploader';
-import '../../styles/forms.css';
+import 'styles/forms.css';
 
 
 
@@ -17,7 +17,7 @@ const RegistrationForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         const formData = new URLSearchParams();
         
         formData.append('username', userName);
@@ -106,7 +106,10 @@ const LoginForm = () => {
 
     return (
         <div className="form-container">
-            <h3>Enter your account</h3>
+            <h3>
+                Enter your account
+            </h3>
+
             <form>
                 <label htmlFor="email">
                     Email
@@ -118,6 +121,7 @@ const LoginForm = () => {
                     />
                 </label>
                 <br />
+
                 <label htmlFor="password">
                     Password
                     <input
@@ -128,7 +132,10 @@ const LoginForm = () => {
                     />
                 </label>
                 <br />
-                <button type="submit">Finish</button>
+
+                <button type="submit">
+                    Finish
+                </button>
             </form>
         </div>
     ); 
@@ -137,6 +144,7 @@ const LoginForm = () => {
 
 
 
+/////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -149,11 +157,10 @@ const InputRecipeForm = () => {
     const [recipePrepTime, setRecipePrepTime] = useState('');
     const [recipeCookTime, setRecipeCookTime] = useState('');
 
+    
     const navigate = useNavigate(); 
 
-    const handleFileSelect = (file) => {
-        setSelectedFile(file);
-    };
+    const handleFileSelect = (file) => { setSelectedFile(file); };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -184,9 +191,13 @@ const InputRecipeForm = () => {
 
     return (
         <div className="form-container">
-            <h3>Create your own recipe</h3>
+            <h3>
+                Create your own recipe
+            </h3>
 
-            <h4>General Overview</h4>
+            <h4>
+                General Overview
+            </h4>
             <form onSubmit={handleSubmit}>
                 
                 <label htmlFor="title">
@@ -271,7 +282,9 @@ const InputRecipeForm = () => {
                 </label>
                 <br /> */}
 
-                <button type="submit" onSubmit={handleSubmit}>Add Recipe</button>
+                <button type="submit" onSubmit={handleSubmit}>
+                    Add Recipe
+                </button>
             </form>
         </div>
     ); 
@@ -280,6 +293,7 @@ const InputRecipeForm = () => {
 
 
 
+/////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -292,9 +306,9 @@ function ContactForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
         try {
             const formData = { name, email, message };
-            console.log(formData);
             const response = await fetch('http://localhost:8888/contact_us.phps', {
                 method: 'POST',
                 headers: {
@@ -311,15 +325,19 @@ function ContactForm() {
 
     if (formSubmitted) {
         return <div>
-                Thank you, {name}, for submitting your information. 
-                We have processed your account successfully and will be in touch with you at {email}.
-            </div>
+                    Thank you, {name}, for submitting your information. 
+                    We have processed your account successfully and will be in touch with you at {email}.
+                </div>
     }
+
     return (
         <div className="form-container">
             <form onSubmit={handleSubmit}>
-
-                <h1>What Can We Help You With?</h1>
+                <div>
+                    <h1>
+                        What Can We Help You With?
+                    </h1>
+                </div>
 
                 <label htmlFor="text">
                     Name
@@ -356,7 +374,9 @@ function ContactForm() {
                 </label>
                 <br />
 
-                <button type="submit">Send Message</button>
+                <button type="submit">
+                    Send Message
+                </button>
             </form>
         </div>
 
@@ -366,43 +386,47 @@ function ContactForm() {
 
 
 
+/////////////////////////////////////////////////////////////////////////////////////////
 
 
 
-    const AdminLoginForm = () => {
-        const [username, setUsername] = useState('');
-        const [password, setPassword] = useState('');
 
-        const navigate = useNavigate(); 
+    // const AdminLoginForm = () => {
+    //     const [username, setUsername] = useState('');
+    //     const [password, setPassword] = useState('');
+
+    //     const navigate = useNavigate(); 
         
-        const handleSubmit = async (event) => {
-            event.preventDefault();
-            try {
-                const response = await axios.post('http://localhost:8888/admin_login.php', { username, password });
-                if (response.data.success) {
-                    navigate('/ConfirmationPage');
-                }
-            } catch (error) {
-                console.error('Login failed', error);
-            }
-        };
+    //     const handleSubmit = async (e) => {
+    //         e.preventDefault();
+    //         try {
+    //             const response = await axios.post('http://localhost:8888/admin_login.php', { username, password });
+    //             if (response.data.success) {
+    //                 navigate('/ConfirmationPage');
+    //             }
+    //         } catch (error) {
+    //             console.error('Login failed', error);
+    //         }
+    //     };
 
-        return (
-            <div className="form-container">
-                <form onSubmit={handleSubmit}>
-                    <label>Username</label>
-                    <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-                    <label>Password</label>
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                    <input type="text" style={{ display: 'none' }} /> {/* Honeypot Field */}
-                    <button type="submit">Login</button>
-                </form>
-            </div>
-        );
-    };
+    //     return (
+    //         <div className="form-container">
+    //             <form onSubmit={handleSubmit}>
+    //                 <label>Username</label>
+    //                 <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+    //                 <label>Password</label>
+    //                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+    //                 <input type="text" style={{ display: 'none' }} /> {/* Honeypot */}
+    //                 <button type="submit">
+    //                     Login
+    //                 </button>
+    //             </form>
+    //         </div>
+    //     );
+    // };
 
 export {RegistrationForm};
 export {LoginForm};
 export {ContactForm};
 export {InputRecipeForm};
-export {AdminLoginForm};
+// export {AdminLoginForm};
