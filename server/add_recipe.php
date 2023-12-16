@@ -4,11 +4,11 @@ include 'connect.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Enable CORS
+// CORS
 header("Access-Control-Allow-Origin: *");
 
 // $uploadOk = 1;
-// Image Upload Logic
+// uploading the image
 $target_dir = "uploads/";
 $image = $_FILES['image']['name'];
 $target_file = $target_dir . basename($image);
@@ -74,8 +74,8 @@ if (move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
     exit;
 }
 
-// Assuming image upload was successful, proceed with recipe data handling
-    // Create table if it doesn't exist
+// is the upload was sucessful, do handling
+    // create table if it doesn't exist
     $sql = "CREATE TABLE IF NOT EXISTS recipes (
         id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
         author_id INT(11) DEFAULT NULL,
@@ -88,7 +88,7 @@ if (move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
     )";
     $pdo->exec($sql);
 
-    // Prepare SQL query to insert both recipe data and image path
+    // prepare SQL query for recipe data and image path
     $sql = "INSERT INTO recipes (title, image, description, servings, prep_time, cook_time) VALUES (?, ?, ?, ?, ?, ?)";
 
     $recipeName = $_POST["title"];
@@ -101,4 +101,4 @@ if (move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$recipeName, $recipeImage, $recipeDescription, $recipeServings, $recipePrepTime, $recipeCookTime]);
 
-$pdo = null; // Close connection
+$pdo = null; // end connection
